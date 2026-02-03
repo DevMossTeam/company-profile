@@ -63,7 +63,7 @@ createApp({
                     name: 'KabarE Web', 
                     description: 'A comprehensive news platform for students and community to access campus-related information. Features include news management, forums, comments, voting, and personalized content recommendations with content moderation.',
                     category: 'Web Development',
-                    technologies: ['PHP', 'Laravel', 'MySQL', 'JavaScript'],
+                    technologies: ['PHP', 'Tailwind CSS', 'MySQL', 'JavaScript'],
                     color: '#3b82f6'
                 },
                 { 
@@ -79,7 +79,7 @@ createApp({
                     name: 'MediaExplant Web', 
                     description: 'A digital media platform for student journalism and opinion pieces, providing a structured way to publish and manage journalistic content.',
                     category: 'Web Development',
-                    technologies: ['PHP', 'Laravel', 'MySQL', 'Tailwind'],
+                    technologies: ['PHP', 'Laravel', 'MySQL', 'Tailwind CSS'],
                     color: '#10b981'
                 },
                 { 
@@ -95,12 +95,12 @@ createApp({
                     name: 'Dragon Fruit Grading', 
                     description: 'Computer vision-based automated system for grading dragon fruit quality based on size, shape, and color using machine learning algorithms.',
                     category: 'AI Systems',
-                    technologies: ['Python', 'OpenCV', 'TensorFlow', 'FastAPI'],
+                    technologies: ['Python', 'OpenCV', 'TensorFlow', 'Flask'],
                     color: '#f59e0b'
                 },
                 { 
                     id: 6, 
-                    name: 'D-Kost Desktop', 
+                    name: 'D-Kost', 
                     description: 'Desktop application for boarding house management built with Java, featuring comprehensive data management with OOP principles and GUI implementation.',
                     category: 'Desktop Apps',
                     technologies: ['Java', 'JavaFX', 'MySQL'],
@@ -143,7 +143,8 @@ createApp({
             // Partners data - DIUBAH: hanya UKPM Explant
             partners: [
                 { id: 1, name: 'UKPM Explant' },
-                { id: 2, name: 'Vita Laundry' }
+                { id: 2, name: 'Vita Laundry' },
+                { id: 3, name: 'PT Bahari Samudra' }
             ],
             
             // Contact methods - DIUBAH: update kontak lebih profesional
@@ -152,15 +153,15 @@ createApp({
                     id: 1, 
                     name: 'WhatsApp', 
                     icon: 'fab fa-whatsapp', 
-                    value: '+62 812 3456 7890', 
-                    link: 'https://wa.me/6281234567890' 
+                    value: '+62 853 3674 4444', 
+                    link: 'https://wa.me/6285336744444' 
                 },
                 { 
                     id: 2, 
                     name: 'Email', 
                     icon: 'fas fa-envelope', 
-                    value: 'contact@devmoss.com', 
-                    link: 'mailto:contact@devmoss.com' 
+                    value: 'devmossteam@gmail.com', 
+                    link: 'mailto:devmossteam@gmail.com' 
                 },
                 { 
                     id: 3, 
@@ -182,7 +183,7 @@ createApp({
             socialLinks: [
                 { id: 1, icon: 'fab fa-instagram', link: 'https://instagram.com/devmoss.official' },
                 { id: 2, icon: 'fab fa-linkedin-in', link: 'https://linkedin.com/company/devmoss' },
-                { id: 3, icon: 'fab fa-github', link: 'https://github.com/devmoss' },
+                { id: 3, icon: 'fab fa-github', link: 'https://github.com/devmossteam' },
                 { id: 4, icon: 'fab fa-twitter', link: 'https://twitter.com/devmoss' }
             ],
             
