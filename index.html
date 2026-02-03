@@ -1,186 +1,260 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Devmoss Team | Digital Innovation</title>
-  <link rel="stylesheet" href="css/style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevMoss - Intelligent Digital Solutions</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome untuk ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Vue 3 CDN -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- Smooth Scroll -->
+    <script src="https://unpkg.com/smoothscroll-polyfill/dist/smoothscroll.min.js"></script>
 </head>
 <body>
+    <div id="app">
+        <!-- Header & Navigation -->
+        <header :class="{ 'sticky': isSticky }">
+            <nav class="navbar">
+                <div class="logo">
+                    <h2><span class="logo-dev">Dev</span><span class="logo-moss">Moss</span></h2>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <ul class="nav-menu">
+                    <li v-for="item in menuItems" :key="item.id">
+                        <a :href="item.link" @click.prevent="scrollToSection(item.section)" :class="{ 'active': activeSection === item.section }">
+                            {{ item.text }}
+                        </a>
+                    </li>
+                </ul>
+                
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" @click="toggleMobileMenu">
+                    <i class="fas" :class="mobileMenuOpen ? 'fa-times' : 'fa-bars'"></i>
+                </button>
+            </nav>
+            
+            <!-- Mobile Menu -->
+            <div class="mobile-menu" :class="{ 'open': mobileMenuOpen }">
+                <ul>
+                    <li v-for="item in menuItems" :key="item.id">
+                        <a :href="item.link" @click.prevent="scrollToSection(item.section)" @click="mobileMenuOpen = false">
+                            {{ item.text }}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </header>
 
-<header class="nav">
-  <div class="logo">Devmoss</div>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#portfolio">Portfolio</a>
-    <a href="#partners">Partners</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
-
-<section class="hero">
-  <div class="hero-content">
-    <h1 class="reveal">We Build Intelligent Digital Products</h1>
-    <p class="shimmer-line"></p>
-    <p class="shimmer-line short"></p>
-  </div>
+<!-- Hero Section - DIUBAH: narasi diperbaiki -->
+<section class="hero" id="home">
+    <div class="hero-content">
+        <h1 class="hero-title">We Build Intelligent Digital Solutions</h1>
+        <p class="hero-subtitle">Transforming businesses through innovative technology and exceptional user experiences.</p>
+        <p class="hero-description">We specialize in creating scalable, high-performance digital products that drive growth and deliver measurable results for modern businesses.</p>
+        <div class="hero-buttons">
+            <a href="#portfolio" class="btn btn-primary" @click.prevent="scrollToSection('portfolio')">View Our Work</a>
+            <a href="#contact" class="btn btn-secondary" @click.prevent="scrollToSection('contact')">Start a Project</a>
+        </div>
+    </div>
+    <div class="hero-image">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+    </div>
 </section>
 
-<section id="about" class="section">
-  <h2 class="reveal">About Devmoss Team</h2>
-  <p class="reveal">Devmoss Team is a technology-focused creative company delivering Web Development, AI Systems, and modern UI/UX experiences for forward-thinking businesses.</p>
+<!-- About Section - DIUBAH: narasi diperbaiki -->
+<section class="about" id="about">
+    <div class="container">
+        <h2 class="section-title">About Devmoss</h2>
+        <p class="section-subtitle">We are a technology-driven creative agency focused on delivering exceptional digital experiences and innovative solutions for forward-thinking businesses.</p>
+        
+        <div class="vision-mission">
+            <div class="vm-card">
+                <div class="vm-icon">
+                    <i class="fas fa-eye"></i>
+                </div>
+                <h3>Our Vision</h3>
+                <p>To be a leading digital innovation partner that empowers businesses worldwide through intelligent, scalable, and future-ready technology solutions that drive growth and transformation.</p>
+            </div>
+            
+            <div class="vm-card">
+                <div class="vm-icon">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+                <h3>Our Mission</h3>
+                <p>To deliver high-performance digital products, integrate AI-driven intelligence, and create impactful user experiences that accelerate business success and enable digital transformation.</p>
+            </div>
+        </div>
+    </div>
 </section>
 
-<section id="vision" class="section">
-  <h2 class="reveal">Vision & Mission</h2>
+        <!-- Services Section -->
+        <section class="services" id="services">
+            <div class="container">
+                <h2 class="section-title">Our Services</h2>
+                <p class="section-subtitle">We offer a comprehensive range of digital services to help your business thrive in the modern digital landscape.</p>
+                
+                <div class="services-grid">
+                    <div class="service-card" v-for="service in services" :key="service.id">
+                        <div class="service-icon">
+                            <i :class="service.icon"></i>
+                        </div>
+                        <h3>{{ service.title }}</h3>
+                        <p>{{ service.description }}</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <div class="vision-mission">
-    <div class="vm-card reveal">
-      <h3>Our Vision</h3>
-      <p>
-        To become a leading digital innovation partner that empowers businesses
-        worldwide through intelligent, scalable, and future-ready technology solutions.
-      </p>
+        <!-- Portfolio Section -->
+        <section class="portfolio" id="portfolio">
+            <div class="container">
+                <h2 class="section-title">Portfolio</h2>
+                <p class="section-subtitle">Explore our recent projects that showcase our expertise in creating innovative digital solutions.</p>
+                
+                <div class="portfolio-filter">
+                    <button 
+                        v-for="filter in portfolioFilters" 
+                        :key="filter.id"
+                        @click="setActiveFilter(filter)"
+                        :class="{ 'active': activeFilter === filter.id }"
+                    >
+                        {{ filter.name }}
+                    </button>
+                </div>
+                
+                <div class="portfolio-grid">
+                    <div 
+                        class="portfolio-item" 
+                        v-for="project in filteredProjects" 
+                        :key="project.id"
+                        @mouseenter="hoveredProject = project.id"
+                        @mouseleave="hoveredProject = null"
+                    >
+                        <div class="portfolio-image">
+                            <!-- Placeholder untuk gambar proyek -->
+                            <div class="image-placeholder" :style="{ 'background-color': project.color }">
+                                <div class="project-name">{{ project.name }}</div>
+                            </div>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>{{ project.name }}</h3>
+                            <p>{{ project.description }}</p>
+                            <div class="project-tech">
+                                <span v-for="tech in project.technologies" :key="tech">{{ tech }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Partners Section -->
+        <section class="partners" id="partners">
+            <div class="container">
+                <h2 class="section-title">Our Partners</h2>
+                <p class="section-subtitle">We collaborate with forward-thinking organizations to deliver exceptional digital experiences.</p>
+                
+                <div class="partners-grid">
+                    <div class="partner-logo" v-for="partner in partners" :key="partner.id">
+                        <div class="logo-placeholder">
+                            {{ partner.name }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact" id="contact">
+            <div class="container">
+                <h2 class="section-title">Connect With Us</h2>
+                <p class="section-subtitle">Ready to bring your digital vision to life? Get in touch with our team today.</p>
+                
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-method" v-for="method in contactMethods" :key="method.id">
+                            <div class="contact-icon">
+                                <i :class="method.icon"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>{{ method.name }}</h4>
+                                <a :href="method.link" target="_blank">{{ method.value }}</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form">
+                        <h3>Send us a message</h3>
+                        <form @submit.prevent="submitContactForm">
+                            <div class="form-group">
+                                <input type="text" v-model="contactForm.name" placeholder="Your Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" v-model="contactForm.email" placeholder="Your Email" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" v-model="contactForm.subject" placeholder="Subject" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea v-model="contactForm.message" placeholder="Your Message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" :disabled="isSubmitting">
+                                {{ isSubmitting ? 'Sending...' : 'Send Message' }}
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-logo">
+                        <h2><span class="logo-dev">Dev</span><span class="logo-moss">Moss</span></h2>
+                        <p>Building intelligent digital solutions for the future.</p>
+                    </div>
+                    
+                    <div class="footer-links">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li v-for="item in menuItems" :key="item.id">
+                                <a :href="item.link" @click.prevent="scrollToSection(item.section)">{{ item.text }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-contact">
+                        <h4>Contact Info</h4>
+                        <p><i class="fas fa-envelope"></i> hello@devmoss.com</p>
+                        <p><i class="fas fa-phone"></i> +62 812 3456 7890</p>
+                        <div class="social-icons">
+                            <a v-for="social in socialLinks" :key="social.id" :href="social.link" target="_blank">
+                                <i :class="social.icon"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-bottom">
+                    <p>&copy; {{ currentYear }} DevMoss. All rights reserved.</p>
+                    <p>Designed with <i class="fas fa-heart"></i> and Vue.js</p>
+                </div>
+            </div>
+        </footer>
     </div>
 
-    <div class="vm-card reveal">
-      <h3>Our Mission</h3>
-      <p>
-        Deliver high-performance digital products, integrate AI-driven systems,
-        and create impactful user experiences that accelerate business growth
-        and digital transformation.
-      </p>
-    </div>
-  </div>
-</section>
-
-<section id="services" class="section">
-  <h2 class="reveal">Our Services</h2>
-  <div class="grid-3">
-    <div class="card reveal">...</div>
-    <div class="card reveal">...</div>
-    <div class="card reveal">...</div>
-  </div>
-</section>
-
-<section id="portfolio" class="section">
-  <h2 class="reveal">Portfolio</h2>
-
-  <div class="portfolio-grid">
-
-    <!-- PROJECT 1 -->
-    <a href="https://github.com/DevMossTeam/KabarE-Web" target="_blank" rel="noopener" class="portfolio-card reveal">
-      <img src="https://picsum.photos/500/300?1" class="portfolio-img" alt="KabarE Web project screenshot">
-      <div class="portfolio-content">
-        <h3>KabarE Web</h3>
-        <p>KabarE adalah platform berita web yang memudahkan mahasiswa dan masyarakat mengakses informasi terkini, khususnya terkait kampus. Fitur seperti pengelolaan berita, forum, komentar, voting, dan rekomendasi berita dipersonalisasi. Moderasi konten menjaga diskusi tetap positif dan sesuai kebijakan komunitas.</p>
-      </div>
-    </a>
-
-    <!-- PROJECT 2 -->
-    <a href="https://github.com/DevMossTeam/KabarE-Mobile" target="_blank" rel="noopener" class="portfolio-card reveal">
-      <img src="https://picsum.photos/500/300?2" class="portfolio-img" alt="KabarE-Mobile project screenshot">
-      <div class="portfolio-content">
-        <h3>KabarE-Mobile</h3>
-        <p>A mobile news portal for UKPM Explant, delivering the latest updates, articles, and exclusive campus news with quick access and a user-friendly interface.</p>
-      </div>
-    </a>
-
-    <!-- PROJECT 3 -->
-    <a href="https://github.com/DevMossTeam/Media_Explant_ProjectFW" target="_blank" rel="noopener" class="portfolio-card reveal">
-      <img src="https://picsum.photos/500/300?3" class="portfolio-img" alt="MediaExplant Web project screenshot">
-      <div class="portfolio-content">
-        <h3>MediaExplant Web</h3>
-        <p>Media Explant merupakan platform yang menjadi media utama untuk menyampaikan informasi bisa berupa opini atau karya jurnalistik mahasiswa di UKPM Explant.</p>
-      </div>
-    </a>
-
-    <!-- PROJECT 4 -->
-    <a href="https://github.com/DevMossTeam/MediaExplant-Mobile" target="_blank" rel="noopener" class="portfolio-card reveal">
-      <img src="https://picsum.photos/500/300?4" class="portfolio-img" alt="MediaExplant Mobile project screenshot">
-      <div class="portfolio-content">
-        <h3>MediaExplant Mobile</h3>
-        <p>A mobile application for UKPM Explant that allows users to access news, articles, and exclusive content from the MediaExplant platform on the go.</p>
-      </div>
-    </a>
-
-    <!-- PROJECT 5 -->
-    <a href="https://github.com/DevMossTeam/DragonFruit_Grading" target="_blank" rel="noopener" class="portfolio-card reveal">
-      <img src="https://picsum.photos/500/300?5" class="portfolio-img" alt="Dragon Fruit Grading project screenshot">
-      <div class="portfolio-content">
-        <h3>Dragon Fruit Grading</h3>
-        <p>Automated system for grading dragon fruit based on size and shape.</p>
-      </div>
-    </a>
-
-    <!-- PROJECT 6 -->
-    <a href="https://github.com/Faraysz/D-Kost_Desktop" target="_blank" rel="noopener" class="portfolio-card reveal">
-      <img src="https://picsum.photos/500/300?6" class="portfolio-img" alt="D-Kost Desktop project screenshot">
-      <div class="portfolio-content">
-        <h3>D-Kost D-Kost_Desktop</h3>
-        <p>Aplikasi Desktop berbasis Java yang dibuat untuk membantu pengelolaan data kos secara sederhana dan terstruktur dengan fokus pada penerapan konsep OOP (Object-Oriented Programming) dan pembuatan GUI Desktop.</p>
-      </div>
-    </a>
-
-    <!-- PROJECT 7 -->
-    <a href="https://github.com/Faraysz/WebsiteAdmin-ADEK" target="_blank" rel="noopener" class="portfolio-card reveal">
-      <img src="https://picsum.photos/500/300?7" class="portfolio-img" alt="WebsiteAdmin-ADEK project screenshot">
-      <div class="portfolio-content">
-        <h3>WebsiteAdmin-ADEK</h3>
-        <p>Sistem informasi berbasis web untuk mengelola bagian admin dari aplikasi diet. — dibangun dengan PHP dan teknologi web standar untuk mendukung pengelolaan informasi aplikasi diet secara terstruktur dan terpusat.</p>
-      </div>
-    </a>
-
-    <!-- PROJECT 8 -->
-    <a href="https://github.com/Faraysz/Adek_laravel" target="_blank" rel="noopener" class="portfolio-card reveal">
-      <img src="https://picsum.photos/500/300?8" class="portfolio-img" alt="Adek Web project screenshot">
-      <div class="portfolio-content">
-        <h3>Adek Web</h3>
-        <p>Aplikasi web yang dibangun menggunakan Laravel Framework sebagai project kuliah Semester 4. Project ini menyediakan struktur dan fitur dasar aplikasi modern berbasis web menggunakan Laravel, Blade templating, dan teknologi web standar, untuk mendukung pengelolaan data dan interface yang terorganisir.</p>
-      </div>
-    </a>
-
-    <!-- PROJECT 9 -->
-    <a href="https://github.com/Faraysz/QRDeviceManagerMobile" target="_blank" rel="noopener" class="portfolio-card reveal">
-      <img src="https://picsum.photos/500/300?9" class="portfolio-img" alt="QR Device Manager Mobile project screenshot">
-      <div class="portfolio-content">
-        <h3>QR Device Manager Mobile</h3>
-        <p>Sistem manajemen perangkat IoT berbasis mobile yang menggunakan Golang dan PostgreSQL sebagai inti backend, serta React Native (mobile) untuk antarmuka pengguna.</p>
-      </div>
-    </a>
-
-  </div>
-</section>
-
-<section id="partners" class="section">
-  <h2>Our Partners</h2>
-  <div class="partners">
-    <div class="partner-logo"></div>
-    <div class="partner-logo"></div>
-    <div class="partner-logo"></div>
-  </div>
-</section>
-
-<section id="contact" class="section reveal">
-  <h2>Connect With Us</h2>
-  <div class="contact-logos">
-    <a href="https://wa.me/6281234567890" target="_blank" rel="noopener">
-      <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
-    </a>
-    <a href="mailto:devmoss@email.com">
-      <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email">
-    </a>
-    <a href="https://instagram.com/devmoss" target="_blank" rel="noopener">
-      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
-    </a>
-    <a href="https://linkedin.com" target="_blank" rel="noopener">
-      <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
-    </a>
-  </div>
-</section>
-
-<script src="js/main.js"></script>
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
 </body>
 </html>
