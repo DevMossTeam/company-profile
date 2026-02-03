@@ -33,7 +33,7 @@
                 </ul>
                 
                 <!-- Mobile Menu Button -->
-                <button class="mobile-menu-btn" @click="toggleMobileMenu">
+                <button class="mobile-menu-btn" @click="toggleMobileMenu" aria-label="Toggle mobile menu">
                     <i class="fas" :class="mobileMenuOpen ? 'fa-times' : 'fa-bars'"></i>
                 </button>
             </nav>
@@ -236,8 +236,8 @@
                     
                     <div class="footer-contact">
                         <h4>Contact Info</h4>
-                        <p><i class="fas fa-envelope"></i> hello@devmoss.com</p>
-                        <p><i class="fas fa-phone"></i> +62 812 3456 7890</p>
+                        <p><i class="fas fa-envelope"></i> devmossteam@gmail.com</p>
+                        <p><i class="fas fa-phone"></i> +62 853 3674 4444</p>
                         <div class="social-icons">
                             <a v-for="social in socialLinks" :key="social.id" :href="social.link" target="_blank">
                                 <i :class="social.icon"></i>
