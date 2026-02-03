@@ -1726,3 +1726,55 @@ footer {
         background-color: #000 !important;
     }
 }
+/* ============================================= */
+/* HIDE FLOATING SHAPES ON NON-DESKTOP DEVICES  */
+/* ============================================= */
+
+/* Hide shapes on all devices below 1200px (non-desktop) */
+@media screen and (max-width: 1199px) {
+    .floating-shapes,
+    .shape,
+    .shape-1,
+    .shape-2,
+    .shape-3 {
+        display: none !important;
+    }
+    
+    /* Optional: Adjust hero layout when shapes are hidden */
+    .hero {
+        justify-content: center;
+    }
+    
+    .hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    
+    .hero-image {
+        display: none !important;
+    }
+}
+
+/* Specifically for mobile devices - ensure shapes are hidden */
+@media screen and (max-width: 767px) {
+    .floating-shapes {
+        display: none !important;
+    }
+    
+    .hero-image {
+        display: none !important;
+    }
+}
+
+/* Extra small devices - double check */
+@media screen and (max-width: 575px) {
+    .floating-shapes,
+    .shape {
+        display: none !important;
+    }
+    
+    .hero-image {
+        display: none !important;
+    }
+}
