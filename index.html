@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,41 +9,48 @@
     <!-- Font Awesome untuk ikon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <!-- Vue 3 CDN -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <!-- Smooth Scroll -->
     <script src="https://unpkg.com/smoothscroll-polyfill/dist/smoothscroll.min.js"></script>
 </head>
+
 <body>
     <div id="app">
         <!-- Header & Navigation -->
         <header :class="{ 'sticky': isSticky }">
             <nav class="navbar">
                 <div class="logo">
-                    <h2><span class="logo-dev">Dev</span><span class="logo-moss">Moss</span></h2>
+                    <a href="#home" @click.prevent="scrollToSection('home')">
+                        <img src="assets/DevTeam.svg" alt="Devmoss Logo" class="logo-img">
+                    </a>
                 </div>
-                
+
                 <!-- Desktop Menu -->
                 <ul class="nav-menu">
                     <li v-for="item in menuItems" :key="item.id">
-                        <a :href="item.link" @click.prevent="scrollToSection(item.section)" :class="{ 'active': activeSection === item.section }">
+                        <a :href="item.link" @click.prevent="scrollToSection(item.section)"
+                            :class="{ 'active': activeSection === item.section }">
                             {{ item.text }}
                         </a>
                     </li>
                 </ul>
-                
+
                 <!-- Mobile Menu Button -->
                 <button class="mobile-menu-btn" @click="toggleMobileMenu" aria-label="Toggle mobile menu">
                     <i class="fas" :class="mobileMenuOpen ? 'fa-times' : 'fa-bars'"></i>
                 </button>
             </nav>
-            
+
             <!-- Mobile Menu -->
             <div class="mobile-menu" :class="{ 'open': mobileMenuOpen }">
                 <ul>
                     <li v-for="item in menuItems" :key="item.id">
-                        <a :href="item.link" @click.prevent="scrollToSection(item.section)" @click="mobileMenuOpen = false">
+                        <a :href="item.link" @click.prevent="scrollToSection(item.section)"
+                            @click="mobileMenuOpen = false">
                             {{ item.text }}
                         </a>
                     </li>
@@ -50,58 +58,68 @@
             </div>
         </header>
 
-<!-- Hero Section - DIUBAH: narasi diperbaiki -->
-<section class="hero" id="home">
-    <div class="hero-content">
-        <h1 class="hero-title">We Build Intelligent Digital Solutions</h1>
-        <p class="hero-subtitle">Transforming businesses through innovative technology and exceptional user experiences.</p>
-        <p class="hero-description">We specialize in creating scalable, high-performance digital products that drive growth and deliver measurable results for modern businesses.</p>
-        <div class="hero-buttons">
-            <a href="#portfolio" class="btn btn-primary" @click.prevent="scrollToSection('portfolio')">View Our Work</a>
-            <a href="#contact" class="btn btn-secondary" @click.prevent="scrollToSection('contact')">Start a Project</a>
-        </div>
-    </div>
-    <div class="hero-image">
-        <div class="floating-shapes">
-            <div class="shape shape-1"></div>
-            <div class="shape shape-2"></div>
-            <div class="shape shape-3"></div>
-        </div>
-    </div>
-</section>
+        <!-- Hero Section - DIUBAH: narasi diperbaiki -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <h1 class="hero-title">We Build Intelligent Digital Solutions</h1>
+                <p class="hero-subtitle">Transforming businesses through innovative technology and exceptional user
+                    experiences.</p>
+                <p class="hero-description">We specialize in creating scalable, high-performance digital products that
+                    drive growth and deliver measurable results for modern businesses.</p>
+                <div class="hero-buttons">
+                    <a href="#portfolio" class="btn btn-primary" @click.prevent="scrollToSection('portfolio')">View Our
+                        Work</a>
+                    <a href="#contact" class="btn btn-secondary" @click.prevent="scrollToSection('contact')">Start a
+                        Project</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="floating-shapes">
+                    <div class="shape shape-1"></div>
+                    <div class="shape shape-2"></div>
+                    <div class="shape shape-3"></div>
+                </div>
+            </div>
+        </section>
 
-<!-- About Section - DIUBAH: narasi diperbaiki -->
-<section class="about" id="about">
-    <div class="container">
-        <h2 class="section-title">About Devmoss</h2>
-        <p class="section-subtitle">We are a technology-driven creative agency focused on delivering exceptional digital experiences and innovative solutions for forward-thinking businesses.</p>
-        
-        <div class="vision-mission">
-            <div class="vm-card">
-                <div class="vm-icon">
-                    <i class="fas fa-eye"></i>
+        <!-- About Section - DIUBAH: narasi diperbaiki -->
+        <section class="about" id="about">
+            <div class="container">
+                <h2 class="section-title">About Devmoss</h2>
+                <p class="section-subtitle">We are a technology-driven creative agency focused on delivering exceptional
+                    digital experiences and innovative solutions for forward-thinking businesses.</p>
+
+                <div class="vision-mission">
+                    <div class="vm-card">
+                        <div class="vm-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3>Our Vision</h3>
+                        <p>To be a leading digital innovation partner that empowers businesses worldwide through
+                            intelligent, scalable, and future-ready technology solutions that drive growth and
+                            transformation.</p>
+                    </div>
+
+                    <div class="vm-card">
+                        <div class="vm-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h3>Our Mission</h3>
+                        <p>To deliver high-performance digital products, integrate AI-driven intelligence, and create
+                            impactful user experiences that accelerate business success and enable digital
+                            transformation.</p>
+                    </div>
                 </div>
-                <h3>Our Vision</h3>
-                <p>To be a leading digital innovation partner that empowers businesses worldwide through intelligent, scalable, and future-ready technology solutions that drive growth and transformation.</p>
             </div>
-            
-            <div class="vm-card">
-                <div class="vm-icon">
-                    <i class="fas fa-bullseye"></i>
-                </div>
-                <h3>Our Mission</h3>
-                <p>To deliver high-performance digital products, integrate AI-driven intelligence, and create impactful user experiences that accelerate business success and enable digital transformation.</p>
-            </div>
-        </div>
-    </div>
-</section>
+        </section>
 
         <!-- Services Section -->
         <section class="services" id="services">
             <div class="container">
                 <h2 class="section-title">Our Services</h2>
-                <p class="section-subtitle">We offer a comprehensive range of digital services to help your business thrive in the modern digital landscape.</p>
-                
+                <p class="section-subtitle">We offer a comprehensive range of digital services to help your business
+                    thrive in the modern digital landscape.</p>
+
                 <div class="services-grid">
                     <div class="service-card" v-for="service in services" :key="service.id">
                         <div class="service-icon">
@@ -118,27 +136,19 @@
         <section class="portfolio" id="portfolio">
             <div class="container">
                 <h2 class="section-title">Portfolio</h2>
-                <p class="section-subtitle">Explore our recent projects that showcase our expertise in creating innovative digital solutions.</p>
-                
+                <p class="section-subtitle">Explore our recent projects that showcase our expertise in creating
+                    innovative digital solutions.</p>
+
                 <div class="portfolio-filter">
-                    <button 
-                        v-for="filter in portfolioFilters" 
-                        :key="filter.id"
-                        @click="setActiveFilter(filter)"
-                        :class="{ 'active': activeFilter === filter.id }"
-                    >
+                    <button v-for="filter in portfolioFilters" :key="filter.id" @click="setActiveFilter(filter)"
+                        :class="{ 'active': activeFilter === filter.id }">
                         {{ filter.name }}
                     </button>
                 </div>
-                
+
                 <div class="portfolio-grid">
-                    <div 
-                        class="portfolio-item" 
-                        v-for="project in filteredProjects" 
-                        :key="project.id"
-                        @mouseenter="hoveredProject = project.id"
-                        @mouseleave="hoveredProject = null"
-                    >
+                    <div class="portfolio-item" v-for="project in filteredProjects" :key="project.id"
+                        @mouseenter="hoveredProject = project.id" @mouseleave="hoveredProject = null">
                         <div class="portfolio-image">
                             <!-- Placeholder untuk gambar proyek -->
                             <div class="image-placeholder" :style="{ 'background-color': project.color }">
@@ -161,8 +171,9 @@
         <section class="partners" id="partners">
             <div class="container">
                 <h2 class="section-title">Our Partners</h2>
-                <p class="section-subtitle">We collaborate with forward-thinking organizations to deliver exceptional digital experiences.</p>
-                
+                <p class="section-subtitle">We collaborate with forward-thinking organizations to deliver exceptional
+                    digital experiences.</p>
+
                 <div class="partners-grid">
                     <div class="partner-logo" v-for="partner in partners" :key="partner.id">
                         <div class="logo-placeholder">
@@ -177,8 +188,9 @@
         <section class="contact" id="contact">
             <div class="container">
                 <h2 class="section-title">Connect With Us</h2>
-                <p class="section-subtitle">Ready to bring your digital vision to life? Get in touch with our team today.</p>
-                
+                <p class="section-subtitle">Ready to bring your digital vision to life? Get in touch with our team
+                    today.</p>
+
                 <div class="contact-content">
                     <div class="contact-info">
                         <div class="contact-method" v-for="method in contactMethods" :key="method.id">
@@ -191,7 +203,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="contact-form">
                         <h3>Send us a message</h3>
                         <form @submit.prevent="submitContactForm">
@@ -205,7 +217,8 @@
                                 <input type="text" v-model="contactForm.subject" placeholder="Subject" required>
                             </div>
                             <div class="form-group">
-                                <textarea v-model="contactForm.message" placeholder="Your Message" rows="5" required></textarea>
+                                <textarea v-model="contactForm.message" placeholder="Your Message" rows="5"
+                                    required></textarea>
                             </div>
                             <button type="submit" class="btn btn-primary" :disabled="isSubmitting">
                                 {{ isSubmitting ? 'Sending...' : 'Send Message' }}
@@ -221,10 +234,10 @@
             <div class="container">
                 <div class="footer-content">
                     <div class="footer-logo">
-                        <h2><span class="logo-dev">Dev</span><span class="logo-moss">Moss</span></h2>
+                        <img src="assets/DevTeam-F.svg" alt="Devmoss Logo" class="logo-img-footer">
                         <p>Building intelligent digital solutions for the future.</p>
                     </div>
-                    
+
                     <div class="footer-links">
                         <h4>Quick Links</h4>
                         <ul>
@@ -233,7 +246,7 @@
                             </li>
                         </ul>
                     </div>
-                    
+
                     <div class="footer-contact">
                         <h4>Contact Info</h4>
                         <p><i class="fas fa-envelope"></i>devmossteam@gmail.com</p>
@@ -245,7 +258,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="footer-bottom">
                     <p>&copy; {{ currentYear }} DevMoss. All rights reserved.</p>
                 </div>
@@ -256,4 +269,5 @@
     <!-- JavaScript -->
     <script src="js/main.js"></script>
 </body>
+
 </html>

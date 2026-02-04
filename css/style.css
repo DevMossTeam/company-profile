@@ -1778,3 +1778,19 @@ footer {
         display: none !important;
     }
 }
+
+.logo-img {
+    height: 32px;
+    width: auto;
+    display: block;
+}
+
+.logo-img-footer {
+    height: 38px;
+    margin-bottom: 10px;
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+}
